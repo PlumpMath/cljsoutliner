@@ -1,0 +1,7 @@
+body {
+  margin-top: 80px;
+}
+.selected > .txt {
+  color: white;
+  background: black;
+}
