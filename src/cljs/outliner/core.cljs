@@ -3,7 +3,7 @@
    [om.core :as om :include-macros true]
    [om-tools.dom :as dom :include-macros true]
    [om-tools.core :refer-macros [defcomponent]]
-   [figwheel.client :as fw :include-macros true]
+   [figwheel.client :as fw]
    [outliner.router :as router]
    [outliner.components.index :as index]
    [outliner.components.error :as error]
@@ -17,9 +17,18 @@
 
 (when DEBUG
   (enable-console-print!)
-  (fw/watch-and-reload
-   :websocket-url   "ws://192.168.7.21:3449/figwheel-ws"
-   :jsload-callback (fn [] (print "reloaded"))))
+
+  (fw/start {
+             :websocket-url "ws://localhost:3449/figwheel-ws"
+             :on-jsload (fn []
+                          (print "Reloaded!")
+                          ;; this is a better way to reload the cube example
+                          ;; which will reload even for non-local changes
+                          ;; (example.cube/stop-and-start-ex3)
+                          )
+             })
+  
+  )
 
 ;; touch events 
 ;; -----------------------------------------------------------------------------

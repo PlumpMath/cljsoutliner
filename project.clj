@@ -6,12 +6,12 @@
   :dependencies [[compojure "1.1.8"]
                  [org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2411"]
-                 [org.clojure/core.async "0.1.338.0-5c5012-alpha"]
+                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  ; om
                  [om "0.8.0-beta3"]
                  [prismatic/om-tools "0.3.6"]
                  ; routing
-                 [secretary "1.2.0"]
+                 [secretary "1.2.1"]
                  ; debug
                  [figwheel "0.1.7-SNAPSHOT"]
                  ]
