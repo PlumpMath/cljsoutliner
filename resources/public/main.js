@@ -22,7 +22,7 @@ goog.addDependency("../om_tools/core.js", ['om_tools.core'], ['plumbing.core', '
 goog.addDependency("../outliner/components/error.js", ['outliner.components.error'], ['om_tools.dom', 'om_tools.core', 'cljs.core', 'om.core']);
 goog.addDependency("../cljs/reader.js", ['cljs.reader'], ['goog.string', 'cljs.core', 'goog.string.StringBuffer']);
 goog.addDependency("../figwheel/client/socket.js", ['figwheel.client.socket'], ['cljs.core', 'cljs.reader']);
-goog.addDependency("../figwheel/client/file_reloading.js", ['figwheel.client.file_reloading'], ['goog.net.jsloader', 'goog.Uri', 'cljs.core', 'cljs.core.async', 'clojure.string']);
+goog.addDependency("../figwheel/client/file_reloading.js", ['figwheel.client.file_reloading'], ['goog.string', 'goog.net.jsloader', 'goog.Uri', 'cljs.core', 'cljs.core.async', 'clojure.string']);
 goog.addDependency("../outliner/components/index.js", ['outliner.components.index'], ['om_tools.dom', 'om_tools.core', 'cljs.core', 'cljs.core.async', 'om.core', 'goog.events']);
 goog.addDependency("../figwheel/client/heads_up.js", ['figwheel.client.heads_up'], ['cljs.core', 'cljs.core.async', 'figwheel.client.socket', 'clojure.string']);
 goog.addDependency("../figwheel/client.js", ['figwheel.client'], ['goog.Uri', 'cljs.core', 'cljs.core.async', 'figwheel.client.file_reloading', 'figwheel.client.heads_up', 'figwheel.client.socket']);

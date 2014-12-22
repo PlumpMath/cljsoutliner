@@ -9,10 +9,7 @@
    [om-tools.dom :as dom :include-macros true]
    ))
 
-
-
-(def root-path root-node)
-
+(def root-node [:body 0])
 
 (defn listen [el type]
   (let [out (chan)]
@@ -103,9 +100,9 @@
           ))
 
 (defcomponent outline-body [node owner]
-  (render-state [_ {:keys [root-path selected click-chan] :as state}]
+  (render-state [_ {:keys [base-path selected click-chan] :as state}]
                 (dom/li
-                 {:class (if (= (om/path node) (concat root-path selected))
+                 {:class (if (= (om/path node) (concat base-path selected))
                            "selected"
                            "")
                   :on-click (fn [e]
@@ -113,7 +110,7 @@
                               (.preventDefault e)
                               (put! click-chan {:new-path (om/path node)})
                               )}
-                 
+
                  (when (-> node :attr :text)
                    (dom/div {:class "txt"} 
                             (-> node :attr :text)))
@@ -125,14 +122,13 @@
   (init-state [_]
               (let [key-down-chan (listen js/window "keydown")
                     click-chan    (chan)
-                    root-path     (om/path data)]
+                    base-path     (om/path data)]
                 (go (loop []
                       (alt!
                         ; key down events
                         ; -------------------------------------------------------------------------------
                         key-down-chan
                         ([e c]
-                         
                          (let [command           (keyevent->command (filter identity [(.-keyCode e)
                                                                                       (and (.-shiftKey e) :shift)
                                                                                       (and (.-altKey e)   :alt)
@@ -143,7 +139,7 @@
                                ; index of current node in parent's children
                                current-child-idx (last current-path)
                                ; is path root?
-                               is-root           (= root-path current-path)
+                               is-root           (= root-node current-path)
                                ; current node
                                current           (get-in @data current-path)
                                ; parent path
@@ -166,7 +162,7 @@
                                                      (conj parent-path :children (inc current-child-idx))
                                                      false)
                                ]
-                           
+
                            (case command
                              :cursor-up
                                (when up-path (om/set-state! owner :selected up-path))
@@ -177,7 +173,7 @@
                                               (if is-root current-path
                                                   (gen-left-path current-child-idx parent-path
                                                                  up-path data)))
-                             
+
                              :cursor-right
                                (om/set-state! owner :selected
                                               (gen-right-path current-path current current-child-idx
@@ -194,7 +190,7 @@
                                                      (assoc-in current-path swap-node)
                                                      (assoc-in up-path current))
                                                  ))))
-                                
+
                              :node-down
                              (when down-path
                                (let [swap-node (get-in @data down-path)]
@@ -217,7 +213,7 @@
                                                (let [new-parent-children (remove-node-from-parent parent-children current-child-idx)]
                                                  (assoc-in d (conj parent-path :children) new-parent-children)
                                                  ))))
-                             
+
                              :right-shift-node
                              (when up-path
                                (om/transact! data
@@ -251,19 +247,20 @@
                                                   )))))
                              (recur) 
                              )))
-                        
+
                         ; click events
                         ; -------------------------------------------------------------------------------
                         click-chan ([e c]
                                     (om/set-state! owner :selected (subvec (:new-path e)
-                                                                           (count root-path)))))
+                                                                           (count base-path)))))
                       (recur)))
-                
+
                 ; starting state
                 ; -------------------------------------------------------------------------------
                 {:selected   root-node
                  :click-chan click-chan
-                 :root-path  root-path}))
+                 :base-path  base-path}))
+
   (render-state [_ state]
     (dom/div {:class "yeah"}
         (dom/h2 (pr-str(:selected state)))
