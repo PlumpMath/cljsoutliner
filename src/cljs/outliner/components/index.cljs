@@ -46,14 +46,14 @@
    ; delete ------------------------------------
    [8]         :destroy-node     ;bkspace
    ; visibility of children --------------------
-   [32]        :toggle-collapse  ;space
+   [32]        :toggle-closed    ;space
    })
 
 (defn prev-depth-path [parent-path body]
   (loop [p parent-path]
     (let [current (get-in body p)
           children (:children current)]
-      (if (empty? children) p
+      (if (or (empty? children) (:closed current)) p
           (recur (conj p :children (dec (count children))))))))
 
 
@@ -86,7 +86,9 @@
                       data]
   (cond
    ; current node has children? -> first child
-   (not (empty? (:children current))) (conj current-path :children 0)
+   (and (not (empty? (:children current)))
+        (not (:closed current))) 
+     (conj current-path :children 0)
    ; not max sibling? -> go to next sibling
    (and parent-children (< current-child-idx (dec (count parent-children)))) down-path
    ; else, find next depth wise.
@@ -114,8 +116,10 @@
                  (when (-> node :attr :text)
                    (dom/div {:class "txt"} 
                             (-> node :attr :text)))
-                 (dom/ol
-                  (om/build-all outline-body (:children node) {:state state}))
+                 (when (and (not (empty? (:children node)))
+                            (not (:closed node)))
+                   (dom/ol
+                     (om/build-all outline-body (:children node) {:state state})))
                  ))) 
 
 (defcomponent component [data owner]
@@ -201,18 +205,27 @@
                                                      (assoc-in current-path swap-node)
                                                      (assoc-in down-path current))
                                                  ))))
+
                              :destroy-node
                              (when (not is-root)
                                (om/set-state! owner :selected
                                               (if is-root current-path
                                                   (gen-left-path current-child-idx parent-path
-                                                                 up-path data)
-                                                  ))
+                                                                 up-path data)))
                                (om/transact! data
                                              (fn [d]
                                                (let [new-parent-children (remove-node-from-parent parent-children current-child-idx)]
                                                  (assoc-in d (conj parent-path :children) new-parent-children)
                                                  ))))
+                             :toggle-closed
+                             (when (not is-root)
+                               (om/transact! data
+                                             (fn [d]
+                                               (if (:closed current) 
+                                                 (update-in d current-path dissoc :closed)
+                                                 (assoc-in d (conj current-path :closed) true)
+                                                 )))
+                               )
 
                              :right-shift-node
                              (when up-path
@@ -226,6 +239,7 @@
                                                                 (conj destination-path (dec (count new-destination-children))))
                                                  (-> d
                                                      (assoc-in (conj parent-path :children) new-parent-children)
+                                                     (update-in up-path dissoc :closed)
                                                      (assoc-in destination-path             new-destination-children)
                                                   )))))
                              :left-shift-node
@@ -245,7 +259,7 @@
                                                      (assoc-in destination-path             new-destination-children)
                                                      (assoc-in (conj parent-path :children) new-parent-children)
                                                   )))))
-                             (recur) 
+                             (recur)
                              )))
 
                         ; click events
