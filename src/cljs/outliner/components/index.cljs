@@ -109,7 +109,7 @@
           ))
 
 (defcomponent outline-body [node owner]
-  (render-state [_ {:keys [base-path selected click-chan] :as state}]
+  (render-state [_ {:keys [base-path selected click-chan mode] :as state}]
                 (dom/li
                   {:class (if (= (om/path node) (concat base-path selected))
                             "selected"
@@ -128,26 +128,39 @@
                   (when (and (not (empty? (:children node)))
                              (not (:closed node)))
                     (dom/ol
-                      (om/build-all outline-body (:children node) {:state state})))
+                      (om/build-all outline-body (:children node)
+                                    {:state {:base-path base-path 
+                                             :selected selected
+                                             :click-chan click-chan
+                                             :mode mode
+                                             }})))
                   ))
 
   (did-update [_ _ _]
-              (let [{:keys [mode base-path selected editor-ref]} (om/get-state owner)]
-                (if (and (= :editing mode)
-                         (= (om/path node)
-                            (concat base-path selected)))
-                  (when
-                    (nil? (om/get-state owner :editor-ref))
-                    (om/set-state! owner :editor-ref (js/MediumEditor. (om/get-node owner "txt"))))
-                  (when (om/get-state owner :editor-ref)
-                    (om/transact! node
-                                  (fn [d]
-                                    (let [new-txt (-> (.serialize (om/get-state owner :editor-ref))
-                                                      (aget "element-0" "value")
-                                                      )]
-                                      (.destroy (om/get-state owner :editor-ref))
-                                      (om/set-state! owner :editor-ref nil)
-                                      (assoc-in d [:attr :text] new-txt))))))
+              (let [{:keys [mode base-path selected editor-ref]} (om/get-state owner)
+                    current-node (om/path node)
+                    ]
+                (cond
+                  ; editing, this is selected, has no editor -> make editor.
+                  (and
+                    (= :editing mode)
+                    (= current-node (concat base-path selected))
+                    (nil? (om/get-state owner :editor-ref)))
+                  (om/set-state! owner :editor-ref (js/MediumEditor. (om/get-node owner "txt")))
+                  ; has editor and (not editing, or not selected) -> serialize contents.
+                  (and (om/get-state owner :editor-ref)
+                       (or
+                         (not= current-node (concat base-path selected))
+                         (not= :editing mode)))
+                  (om/transact! node
+                                (fn [d]
+                                  (let [new-txt (-> (.serialize (om/get-state owner :editor-ref))
+                                                    (aget "element-0" "value")
+                                                    )]
+                                    (.destroy (om/get-state owner :editor-ref))
+                                    (om/set-state! owner :editor-ref nil)
+                                    (assoc-in d [:attr :text] new-txt))))
+                  :else :no-op)
                 )))
 
 (defcomponent component [data owner]
@@ -197,7 +210,6 @@
                                                    (conj parent-path :children (inc current-child-idx))
                                                    false)
                                ]
-                           (println current)
                            (case command
                              :cursor-up
                              (when up-path (om/set-state! owner :selected up-path))
