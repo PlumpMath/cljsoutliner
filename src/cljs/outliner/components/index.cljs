@@ -146,7 +146,10 @@
                     (= :editing mode)
                     (= current-node (concat base-path selected))
                     (nil? (om/get-state owner :editor-ref)))
-                  (om/set-state! owner :editor-ref (js/MediumEditor. (om/get-node owner "txt")))
+                  (do
+                    (om/set-state! owner :editor-ref (js/MediumEditor. (om/get-node owner "txt")))
+                    (.focus (om/get-node owner "txt")))
+
                   ; has editor and (not editing, or not selected) -> serialize contents.
                   (and (om/get-state owner :editor-ref)
                        (or
