@@ -47,6 +47,8 @@
    [8]         :destroy-node     ;bkspace
    ; visibility of children --------------------
    [32]        :toggle-closed    ;space
+   ; editing -----------------------------------
+   [13]        :toggle-edit      ;return
    })
 
 (defn prev-depth-path [parent-path body]
@@ -103,6 +105,7 @@
 
 (defcomponent outline-body [node owner]
   (render-state [_ {:keys [base-path selected click-chan] :as state}]
+                (print node)
                 (dom/li
                  {:class (if (= (om/path node) (concat base-path selected))
                            "selected"
@@ -114,8 +117,10 @@
                               )}
 
                  (when (-> node :attr :text)
-                   (dom/div {:class "txt"} 
+                   (dom/div {:class "txt"
+                             :content-editable (if (:editing node) "true" "false")}
                             (-> node :attr :text)))
+
                  (when (and (not (empty? (:children node)))
                             (not (:closed node)))
                    (dom/ol
@@ -259,6 +264,16 @@
                                                      (assoc-in destination-path             new-destination-children)
                                                      (assoc-in (conj parent-path :children) new-parent-children)
                                                   )))))
+                             :toggle-editing
+                             (when (not is-root)
+                               (om/transact! data
+                                             (fn [d]
+                                               (if (:editing current) 
+                                                 (update-in d current-path dissoc :editing)
+                                                 (assoc-in d (conj current-path :editing) true)
+                                                 )))
+                               )
+
                              (recur)
                              )))
 

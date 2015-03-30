@@ -55,7 +55,7 @@
                                     :attr {:name "December 2014" :text "December" :created "Thu Nov 20 2014 16:07:11 GMT+0900 (JST)"}  
                                     :children [
                                                {
-                                                :attr {:name "December 20" :text "December 12" :created "Thu Nov 20 2014 16:07:11 GMT+0900 (JST)"}
+                                                :attr {:name "December 12" :text "December 12" :created "Thu Nov 20 2014 16:07:11 GMT+0900 (JST)"}
                                                 :children [
                                                            {
                                                             :attr {:closed true :text "test4" :created "Thu Nov 20 2014 16:07:11 GMT+0900 (JST)"} 
