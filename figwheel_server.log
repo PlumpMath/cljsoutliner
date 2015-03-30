@@ -1,0 +1,94 @@
+Figwheel: focusing on build-ids (dev)
+[0mCompiling "resources/public/js/compiled/medium_test.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/medium_test.js" in 0.106 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  /outliner/components/index.js
+notifying browser that file changed:  /outliner/components/error.js
+notifying browser that file changed:  /outliner/core.js
+notifying browser that file changed:  /outliner/dev.js
+notifying browser that file changed:  /outliner/router.js
+Figwheel: focusing on build-ids (dev)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.154 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+Figwheel: focusing on build-ids (dev)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.212 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+Figwheel: focusing on build-ids (dev)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.202 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 3.005 seconds.[0m
+notifying browser that file changed:  /outliner/core.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.302 seconds.[0m
+notifying browser that file changed:  /outliner/core.js
+Figwheel: focusing on build-ids (dev)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.233 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+Figwheel: focusing on build-ids (dev)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.145 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+Figwheel: focusing on build-ids (dev)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.198 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+Figwheel: focusing on build-ids (dev)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[31mCompiling "resources/public/js/compiled/outliner.js" failed.[0m
+clojure.lang.ExceptionInfo: failed compiling file:src/cljs/outliner/components/error.cljs
+ at clojure.core$ex_info.invoke (core.clj:4403)
+    cljs.compiler$compile_file$fn__2954.invoke (compiler.clj:1122)
+    cljs.compiler$compile_file.invoke (compiler.clj:1090)
+    cljs.compiler$compile_root.invoke (compiler.clj:1152)
+    cljs.closure$compile_dir.invoke (closure.clj:367)
+    cljs.closure$eval3323$fn__3324.invoke (closure.clj:407)
+    cljs.closure$eval3259$fn__3260$G__3250__3267.invoke (closure.clj:315)
+    cljs.closure$eval3310$fn__3311.invoke (closure.clj:421)
+    cljs.closure$eval3259$fn__3260$G__3250__3267.invoke (closure.clj:315)
+    clojurescript_build.core.CompilableSourcePaths/fn (core.clj:18)
+    clojure.core$map$fn__4245.invoke (core.clj:2557)
+    clojure.lang.LazySeq.sval (LazySeq.java:40)
+    clojure.lang.LazySeq.seq (LazySeq.java:49)
+    clojure.lang.RT.seq (RT.java:484)
+    clojure.core$seq.invoke (core.clj:133)
+    clojure.core$apply.invoke (core.clj:624)
+    clojure.core$mapcat.doInvoke (core.clj:2586)
+    clojure.lang.RestFn.invoke (RestFn.java:423)
+    clojurescript_build.core.CompilableSourcePaths._compile (core.clj:18)
+    cljs.closure$build.invoke (closure.clj:1413)
+    clojurescript_build.core$build_source_paths_STAR_.invoke (core.clj:150)
+    figwheel_sidecar.auto_builder$default_build_options$fn__16215.invoke (auto_builder.clj:66)
+    figwheel_sidecar.auto_builder$warning$fn__16212.invoke (auto_builder.clj:61)
+    clojurescript_build.auto$time_build$fn__16025.invoke (auto.clj:55)
+    clojurescript_build.auto$after$fn__16031.invoke (auto.clj:64)
+    clojurescript_build.auto$after$fn__16031.invoke (auto.clj:64)
+    clojurescript_build.auto$after$fn__16031.invoke (auto.clj:64)
+    clojurescript_build.auto$error$fn__16034.invoke (auto.clj:71)
+    clojurescript_build.auto$before$fn__16028.invoke (auto.clj:60)
+    clojurescript_build.auto$make_conditional_builder$fn__16046.invoke (auto.clj:103)
+Figwheel: focusing on build-ids (dev)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.121 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  /outliner/components/index.js
+notifying browser that file changed:  /outliner/components/error.js
+notifying browser that file changed:  /outliner/core.js
+notifying browser that file changed:  /outliner/dev.js
+Figwheel: focusing on build-ids (dev)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.194 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
