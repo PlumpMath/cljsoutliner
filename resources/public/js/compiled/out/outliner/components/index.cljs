@@ -1,13 +1,13 @@
 (ns outliner.components.index
   (:require-macros [cljs.core.async.macros :refer [go alt!]])
   (:require
-
-   [goog.events :as events]
-   [om.core :as om :include-macros true]
-   [cljs.core.async :as async :refer [put! chan]]
-   [om-tools.core :refer-macros [defcomponent]]
-   [om-tools.dom :as dom :include-macros true]
-   ))
+    [goog.events :as events]
+    [om.core :as om :include-macros true]
+    [cljs.core.async :as async :refer [put! chan]]
+    [om-tools.core :refer-macros [defcomponent]]
+    [om-tools.dom :as dom :include-macros true]
+    [daviferreira.MediumEditor]
+    ))
 
 (def root-node [:body 0])
 
@@ -30,7 +30,7 @@
   (vec (concat (subvec parent-children 0 current-child-idx)
                (subvec parent-children (inc current-child-idx)))))
 
-(def keyevent->command
+(def normal-keymap
   {; cursor movement ---------------------------
    [37]        :cursor-left      ;left
    [38]        :cursor-up        ;up
@@ -51,22 +51,27 @@
    [13]        :toggle-edit      ;return
    })
 
+(def edit-keymap 
+  {
+   [27] :toggle-edit ; escape
+   })
+
 (defn prev-depth-path [parent-path body]
   (loop [p parent-path]
     (let [current (get-in body p)
           children (:children current)]
       (if (or (empty? children) (:closed current)) p
-          (recur (conj p :children (dec (count children))))))))
+        (recur (conj p :children (dec (count children))))))))
 
 
 (defn gen-left-path [current-child-idx parent-path
                      up-path data]
-    (cond
-        ; 0th sibling? -> parent
-        (zero? current-child-idx) parent-path
-        ; else, deepest of parent sibling recursively
-        :else (prev-depth-path up-path @data)
-        ))
+  (cond
+    ; 0th sibling? -> parent
+    (zero? current-child-idx) parent-path
+    ; else, deepest of parent sibling recursively
+    :else (prev-depth-path up-path @data)
+    ))
 
 (defn next-depth-path [parent-path body]
   (loop [p parent-path]
@@ -75,57 +80,75 @@
           maybe-new-node (get-in body maybe-new-p false)
           ]
       (cond
-       ; at the root node -> bottomed out..
-       (= root-node p) false
-       ; found a new node -> return it
-       maybe-new-node maybe-new-p
-       ; else, try again a level up
-       :else (recur (get-parent p))))))
+        ; at the root node -> bottomed out..
+        (= root-node p) false
+        ; found a new node -> return it
+        maybe-new-node maybe-new-p
+        ; else, try again a level up
+        :else (recur (get-parent p))))))
 
 (defn gen-right-path [current-path current current-child-idx
                       parent-path parent-children
                       down-path
                       data]
   (cond
-   ; current node has children? -> first child
-   (and (not (empty? (:children current)))
-        (not (:closed current))) 
-     (conj current-path :children 0)
-   ; not max sibling? -> go to next sibling
-   (and parent-children (< current-child-idx (dec (count parent-children)))) down-path
-   ; else, find next depth wise.
-   :else (or (next-depth-path parent-path @data) current-path)))
+    ; current node has children? -> first child
+    (and (not (empty? (:children current)))
+         (not (:closed current))) 
+    (conj current-path :children 0)
+    ; not max sibling? -> go to next sibling
+    (and parent-children (< current-child-idx (dec (count parent-children)))) down-path
+    ; else, find next depth wise.
+    :else (or (next-depth-path parent-path @data) current-path)))
 
 (defcomponent outline-head [head owner]
   (render [_]
           (dom/div 
-           (dom/h1 {} (:title head))
-           (dom/h2 {} (:modified head)))
+            (dom/h1 {} (:title head))
+            (dom/h2 {} (:modified head)))
           ))
 
 (defcomponent outline-body [node owner]
   (render-state [_ {:keys [base-path selected click-chan] :as state}]
-                (print node)
                 (dom/li
-                 {:class (if (= (om/path node) (concat base-path selected))
-                           "selected"
-                           "")
-                  :on-click (fn [e]
-                              (.stopPropagation e)
-                              (.preventDefault e)
-                              (put! click-chan {:new-path (om/path node)})
-                              )}
+                  {:class (if (= (om/path node) (concat base-path selected))
+                            "selected"
+                            "")
+                   :on-click (fn [e]
+                               (.stopPropagation e)
+                               (.preventDefault e)
+                               (put! click-chan {:new-path (om/path node)})
+                               )}
 
-                 (when (-> node :attr :text)
-                   (dom/div {:class "txt"
-                             :content-editable (if (:editing node) "true" "false")}
-                            (-> node :attr :text)))
+                  (when (-> node :attr :text)
+                    (dom/div {:class "txt" :ref "txt"
+                              :dangerouslySetInnerHTML #js {:__html (-> node :attr :text)}
+                              } nil))
 
-                 (when (and (not (empty? (:children node)))
-                            (not (:closed node)))
-                   (dom/ol
-                     (om/build-all outline-body (:children node) {:state state})))
-                 ))) 
+                  (when (and (not (empty? (:children node)))
+                             (not (:closed node)))
+                    (dom/ol
+                      (om/build-all outline-body (:children node) {:state state})))
+                  ))
+
+  (did-update [_ _ _]
+              (let [{:keys [mode base-path selected editor-ref]} (om/get-state owner)]
+                (if (and (= :editing mode)
+                         (= (om/path node)
+                            (concat base-path selected)))
+                  (when
+                    (nil? (om/get-state owner :editor-ref))
+                    (om/set-state! owner :editor-ref (js/MediumEditor. (om/get-node owner "txt"))))
+                  (when (om/get-state owner :editor-ref)
+                    (om/transact! node
+                                  (fn [d]
+                                    (let [new-txt (-> (.serialize (om/get-state owner :editor-ref))
+                                                      (aget "element-0" "value")
+                                                      )]
+                                      (.destroy (om/get-state owner :editor-ref))
+                                      (om/set-state! owner :editor-ref nil)
+                                      (assoc-in d [:attr :text] new-txt))))))
+                )))
 
 (defcomponent component [data owner]
   (init-state [_]
@@ -138,7 +161,10 @@
                         ; -------------------------------------------------------------------------------
                         key-down-chan
                         ([e c]
-                         (let [command           (keyevent->command (filter identity [(.-keyCode e)
+                         (let [keyevent->command (case (om/get-state owner :mode) 
+                                                   :editing edit-keymap
+                                                   normal-keymap)
+                               command           (keyevent->command (filter identity [(.-keyCode e)
                                                                                       (and (.-shiftKey e) :shift)
                                                                                       (and (.-altKey e)   :alt)
                                                                                       (and (.-ctrlKey e)  :ctrl)
@@ -168,27 +194,27 @@
                                ;; down - greater sibling in parent
                                ;;      or no change
                                down-path         (if (get parent-children (inc current-child-idx) false)
-                                                     (conj parent-path :children (inc current-child-idx))
-                                                     false)
+                                                   (conj parent-path :children (inc current-child-idx))
+                                                   false)
                                ]
-
+                           (println current)
                            (case command
                              :cursor-up
-                               (when up-path (om/set-state! owner :selected up-path))
+                             (when up-path (om/set-state! owner :selected up-path))
                              :cursor-down
-                               (when down-path (om/set-state! owner :selected down-path))
+                             (when down-path (om/set-state! owner :selected down-path))
                              :cursor-left
-                               (om/set-state! owner :selected
-                                              (if is-root current-path
-                                                  (gen-left-path current-child-idx parent-path
-                                                                 up-path data)))
+                             (om/set-state! owner :selected
+                                            (if is-root current-path
+                                              (gen-left-path current-child-idx parent-path
+                                                             up-path data)))
 
                              :cursor-right
-                               (om/set-state! owner :selected
-                                              (gen-right-path current-path current current-child-idx
-                                                              parent-path parent-children
-                                                              down-path
-                                                              data))
+                             (om/set-state! owner :selected
+                                            (gen-right-path current-path current current-child-idx
+                                                            parent-path parent-children
+                                                            down-path
+                                                            data))
                              :node-up
                              (when up-path
                                (let [swap-node (get-in @data up-path)]
@@ -215,8 +241,8 @@
                              (when (not is-root)
                                (om/set-state! owner :selected
                                               (if is-root current-path
-                                                  (gen-left-path current-child-idx parent-path
-                                                                 up-path data)))
+                                                (gen-left-path current-child-idx parent-path
+                                                               up-path data)))
                                (om/transact! data
                                              (fn [d]
                                                (let [new-parent-children (remove-node-from-parent parent-children current-child-idx)]
@@ -246,7 +272,7 @@
                                                      (assoc-in (conj parent-path :children) new-parent-children)
                                                      (update-in up-path dissoc :closed)
                                                      (assoc-in destination-path             new-destination-children)
-                                                  )))))
+                                                     )))))
                              :left-shift-node
                              (when (and parent-path (not (= parent-path root-node)))
                                (om/transact! data
@@ -263,37 +289,35 @@
                                                  (-> d
                                                      (assoc-in destination-path             new-destination-children)
                                                      (assoc-in (conj parent-path :children) new-parent-children)
-                                                  )))))
-                             :toggle-editing
+                                                     )))))
+                             :toggle-edit
                              (when (not is-root)
-                               (om/transact! data
-                                             (fn [d]
-                                               (if (:editing current) 
-                                                 (update-in d current-path dissoc :editing)
-                                                 (assoc-in d (conj current-path :editing) true)
-                                                 )))
-                               )
-
+                               (if (= :editing (om/get-state owner :mode))
+                                 (om/set-state! owner :mode :normal)
+                                 (om/set-state! owner :mode :editing)))
                              (recur)
                              )))
 
-                        ; click events
-                        ; -------------------------------------------------------------------------------
-                        click-chan ([e c]
-                                    (om/set-state! owner :selected (subvec (:new-path e)
-                                                                           (count base-path)))))
-                      (recur)))
+; click events
+; -------------------------------------------------------------------------------
+click-chan ([e c]
+            (let 
+              [target-path (subvec (:new-path e) (count base-path))]
+              (om/set-state! owner :selected target-path)
+              )))
+(recur)))
 
-                ; starting state
-                ; -------------------------------------------------------------------------------
-                {:selected   root-node
-                 :click-chan click-chan
-                 :base-path  base-path}))
+; starting state
+; -------------------------------------------------------------------------------
+{:selected   root-node
+ :click-chan click-chan
+ :base-path  base-path
+ :mode :normal}))
 
-  (render-state [_ state]
-    (dom/div {:class "yeah"}
-        (dom/h2 (pr-str(:selected state)))
-        (om/build outline-head (:head data))
-        (dom/ol {:class "root"}
-                (om/build-all outline-body (:body data) {:state state})
-                ))))
+(render-state [_ state]
+              (dom/div {:class "yeah"}
+                       (dom/h2 (pr-str(:selected state)))
+                       (om/build outline-head (:head data))
+                       (dom/ol {:class "root"}
+                               (om/build-all outline-body (:body data) {:state state})
+                               ))))

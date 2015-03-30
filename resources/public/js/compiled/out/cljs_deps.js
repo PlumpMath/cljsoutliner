@@ -18,7 +18,8 @@ goog.addDependency("../cljs/core/async/impl/channels.js", ['cljs.core.async.impl
 goog.addDependency("../cljs/core/async/impl/ioc_helpers.js", ['cljs.core.async.impl.ioc_helpers'], ['cljs.core', 'cljs.core.async.impl.protocols']);
 goog.addDependency("../cljs/core/async/impl/timers.js", ['cljs.core.async.impl.timers'], ['cljs.core.async.impl.channels', 'cljs.core.async.impl.dispatch', 'cljs.core', 'cljs.core.async.impl.protocols']);
 goog.addDependency("../cljs/core/async.js", ['cljs.core.async'], ['cljs.core.async.impl.channels', 'cljs.core.async.impl.dispatch', 'cljs.core', 'cljs.core.async.impl.buffers', 'cljs.core.async.impl.protocols', 'cljs.core.async.impl.ioc_helpers', 'cljs.core.async.impl.timers']);
-goog.addDependency("../outliner/components/index.js", ['outliner.components.index'], ['om_tools.dom', 'om_tools.core', 'cljs.core', 'cljs.core.async', 'om.core', 'goog.events']);
+goog.addDependency("../medium-editor.js", ['daviferreira.MediumEditor'], []);
+goog.addDependency("../outliner/components/index.js", ['outliner.components.index'], ['om_tools.dom', 'om_tools.core', 'cljs.core', 'cljs.core.async', 'daviferreira.MediumEditor', 'om.core', 'goog.events']);
 goog.addDependency("../outliner/core.js", ['outliner.core'], ['outliner.components.error', 'om_tools.dom', 'om_tools.core', 'cljs.core', 'outliner.components.index', 'om.core']);
 goog.addDependency("../figwheel/client/utils.js", ['figwheel.client.utils'], ['cljs.core']);
 goog.addDependency("../cljs/reader.js", ['cljs.reader'], ['goog.string', 'cljs.core', 'goog.string.StringBuffer']);

@@ -92,3 +92,530 @@ Figwheel: focusing on build-ids (dev)
 [32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.194 seconds.[0m
 notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
 notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.129 seconds.[0m
+[31mCompiling "resources/public/js/compiled/outliner.js" failed.[0m
+java.lang.AssertionError: Assert failed: (symbol? sym)
+ at cljs.analyzer.api$find_ns.invoke (api.clj:32)
+    figwheel_sidecar.core$expand_to_all_ns$fn__15760.invoke (core.clj:303)
+    clojure.core$keep$fn__6402.invoke (core.clj:6713)
+    clojure.lang.LazySeq.sval (LazySeq.java:40)
+    clojure.lang.LazySeq.seq (LazySeq.java:49)
+    clojure.lang.RT.seq (RT.java:484)
+    clojure.lang.RT.countFrom (RT.java:537)
+    clojure.lang.RT.count (RT.java:530)
+    clojure.set$union.invoke (set.clj:25)
+    figwheel_sidecar.core$expand_to_all_ns.invoke (core.clj:304)
+    figwheel_sidecar.core$notify_cljs_ns_changes.invoke (core.clj:350)
+    figwheel_sidecar.core$check_for_changes.invoke (core.clj:374)
+    figwheel_sidecar.auto_builder$check_changes.invoke (auto_builder.clj:43)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.core$apply.invoke (core.clj:626)
+    clojure.core$partial$fn__4228.doInvoke (core.clj:2468)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    clojurescript_build.auto$after$fn__16031.invoke (auto.clj:65)
+    clojurescript_build.auto$after$fn__16031.invoke (auto.clj:64)
+    clojurescript_build.auto$error$fn__16034.invoke (auto.clj:71)
+    clojurescript_build.auto$before$fn__16028.invoke (auto.clj:60)
+    clojurescript_build.auto$make_conditional_builder$fn__16046.invoke (auto.clj:103)
+    clojure.core$mapv$fn__6311.invoke (core.clj:6353)
+    clojure.lang.ArrayChunk.reduce (ArrayChunk.java:58)
+    clojure.core.protocols/fn (protocols.clj:98)
+    clojure.core.protocols$fn__6057$G__6052__6066.invoke (protocols.clj:19)
+    clojure.core.protocols$seq_reduce.invoke (protocols.clj:31)
+    clojure.core.protocols/fn (protocols.clj:60)
+    clojure.core.protocols$fn__6031$G__6026__6044.invoke (protocols.clj:13)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.127 seconds.[0m
+[31mCompiling "resources/public/js/compiled/outliner.js" failed.[0m
+java.lang.AssertionError: Assert failed: (symbol? sym)
+ at cljs.analyzer.api$find_ns.invoke (api.clj:32)
+    figwheel_sidecar.core$expand_to_all_ns$fn__15760.invoke (core.clj:303)
+    clojure.core$keep$fn__6402.invoke (core.clj:6713)
+    clojure.lang.LazySeq.sval (LazySeq.java:40)
+    clojure.lang.LazySeq.seq (LazySeq.java:49)
+    clojure.lang.RT.seq (RT.java:484)
+    clojure.lang.RT.countFrom (RT.java:537)
+    clojure.lang.RT.count (RT.java:530)
+    clojure.set$union.invoke (set.clj:25)
+    figwheel_sidecar.core$expand_to_all_ns.invoke (core.clj:304)
+    figwheel_sidecar.core$notify_cljs_ns_changes.invoke (core.clj:350)
+    figwheel_sidecar.core$check_for_changes.invoke (core.clj:374)
+    figwheel_sidecar.auto_builder$check_changes.invoke (auto_builder.clj:43)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.core$apply.invoke (core.clj:626)
+    clojure.core$partial$fn__4228.doInvoke (core.clj:2468)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    clojurescript_build.auto$after$fn__16031.invoke (auto.clj:65)
+    clojurescript_build.auto$after$fn__16031.invoke (auto.clj:64)
+    clojurescript_build.auto$error$fn__16034.invoke (auto.clj:71)
+    clojurescript_build.auto$before$fn__16028.invoke (auto.clj:60)
+    clojurescript_build.auto$make_conditional_builder$fn__16046.invoke (auto.clj:103)
+    clojure.core$mapv$fn__6311.invoke (core.clj:6353)
+    clojure.lang.ArrayChunk.reduce (ArrayChunk.java:58)
+    clojure.core.protocols/fn (protocols.clj:98)
+    clojure.core.protocols$fn__6057$G__6052__6066.invoke (protocols.clj:19)
+    clojure.core.protocols$seq_reduce.invoke (protocols.clj:31)
+    clojure.core.protocols/fn (protocols.clj:60)
+    clojure.core.protocols$fn__6031$G__6026__6044.invoke (protocols.clj:13)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+Figwheel: focusing on build-ids (dev)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.145 seconds.[0m
+[31mCompiling "resources/public/js/compiled/outliner.js" failed.[0m
+java.lang.AssertionError: Assert failed: (symbol? sym)
+ at cljs.analyzer.api$find_ns.invoke (api.clj:32)
+    figwheel_sidecar.core$expand_to_all_ns$fn__15760.invoke (core.clj:303)
+    clojure.core$keep$fn__6402.invoke (core.clj:6713)
+    clojure.lang.LazySeq.sval (LazySeq.java:40)
+    clojure.lang.LazySeq.seq (LazySeq.java:56)
+    clojure.lang.RT.seq (RT.java:484)
+    clojure.lang.RT.countFrom (RT.java:537)
+    clojure.lang.RT.count (RT.java:530)
+    clojure.set$union.invoke (set.clj:25)
+    figwheel_sidecar.core$expand_to_all_ns.invoke (core.clj:304)
+    figwheel_sidecar.core$notify_cljs_ns_changes.invoke (core.clj:350)
+    figwheel_sidecar.core$check_for_changes.invoke (core.clj:374)
+    figwheel_sidecar.auto_builder$check_changes.invoke (auto_builder.clj:43)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.core$apply.invoke (core.clj:626)
+    clojure.core$partial$fn__4228.doInvoke (core.clj:2468)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    clojurescript_build.auto$after$fn__16031.invoke (auto.clj:65)
+    clojurescript_build.auto$after$fn__16031.invoke (auto.clj:64)
+    clojurescript_build.auto$error$fn__16034.invoke (auto.clj:71)
+    clojurescript_build.auto$before$fn__16028.invoke (auto.clj:60)
+    clojurescript_build.auto$make_conditional_builder$fn__16046.invoke (auto.clj:103)
+    clojure.core$mapv$fn__6311.invoke (core.clj:6353)
+    clojure.lang.ArrayChunk.reduce (ArrayChunk.java:58)
+    clojure.core.protocols/fn (protocols.clj:98)
+    clojure.core.protocols$fn__6057$G__6052__6066.invoke (protocols.clj:19)
+    clojure.core.protocols$seq_reduce.invoke (protocols.clj:31)
+    clojure.core.protocols/fn (protocols.clj:60)
+    clojure.core.protocols$fn__6031$G__6026__6044.invoke (protocols.clj:13)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 3.436 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 1.078 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.867 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.717 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.697 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.674 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+WARNING: Use of undeclared Var om.core/update-state at line 292 src/cljs/outliner/components/index.cljs
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.686 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.657 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.654 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.623 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.621 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.604 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.613 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.606 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.598 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.596 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+WARNING: Use of undeclared Var outliner.components.index/serialize at line 140 src/cljs/outliner/components/index.cljs
+WARNING: Use of undeclared Var outliner.components.index/destroy at line 141 src/cljs/outliner/components/index.cljs
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.616 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+WARNING: Use of undeclared Var outliner.components.index/serialize at line 140 src/cljs/outliner/components/index.cljs
+WARNING: Use of undeclared Var outliner.components.index/destroy at line 141 src/cljs/outliner/components/index.cljs
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.611 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+WARNING: Use of undeclared Var outliner.components.index/serialize at line 140 src/cljs/outliner/components/index.cljs
+WARNING: Use of undeclared Var outliner.components.index/destroy at line 141 src/cljs/outliner/components/index.cljs
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.616 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.679 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.647 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.643 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.623 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.624 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.605 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.639 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.647 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.648 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.642 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.644 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.615 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.597 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.601 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.591 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.598 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.592 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.595 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.591 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+WARNING: Bad method signature in protocol implementation, om.core/IDidMount did-mount does not declare arity 3 at line 111 src/cljs/outliner/components/index.cljs
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.612 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.604 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.596 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.59 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.604 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.598 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.593 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.589 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.592 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.605 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.596 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.594 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.588 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.596 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.614 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.597 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.611 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.596 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.611 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.585 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.591 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.594 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.613 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.612 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.593 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[31mCompiling "resources/public/js/compiled/outliner.js" failed.[0m
+clojure.lang.ExceptionInfo: failed compiling file:src/cljs/outliner/components/index.cljs
+ at clojure.core$ex_info.invoke (core.clj:4403)
+    cljs.compiler$compile_file$fn__2954.invoke (compiler.clj:1122)
+    cljs.compiler$compile_file.invoke (compiler.clj:1090)
+    cljs.compiler$compile_root.invoke (compiler.clj:1152)
+    cljs.closure$compile_dir.invoke (closure.clj:367)
+    cljs.closure$eval3323$fn__3324.invoke (closure.clj:407)
+    cljs.closure$eval3259$fn__3260$G__3250__3267.invoke (closure.clj:315)
+    cljs.closure$eval3310$fn__3311.invoke (closure.clj:421)
+    cljs.closure$eval3259$fn__3260$G__3250__3267.invoke (closure.clj:315)
+    clojurescript_build.core.CompilableSourcePaths/fn (core.clj:18)
+    clojure.core$map$fn__4245.invoke (core.clj:2557)
+    clojure.lang.LazySeq.sval (LazySeq.java:40)
+    clojure.lang.LazySeq.seq (LazySeq.java:49)
+    clojure.lang.RT.seq (RT.java:484)
+    clojure.core$seq.invoke (core.clj:133)
+    clojure.core$apply.invoke (core.clj:624)
+    clojure.core$mapcat.doInvoke (core.clj:2586)
+    clojure.lang.RestFn.invoke (RestFn.java:423)
+    clojurescript_build.core.CompilableSourcePaths._compile (core.clj:18)
+    cljs.closure$build.invoke (closure.clj:1413)
+    clojurescript_build.core$build_source_paths_STAR_.invoke (core.clj:150)
+    figwheel_sidecar.auto_builder$default_build_options$fn__16215.invoke (auto_builder.clj:66)
+    figwheel_sidecar.auto_builder$warning$fn__16212.invoke (auto_builder.clj:61)
+    clojurescript_build.auto$time_build$fn__16025.invoke (auto.clj:55)
+    clojurescript_build.auto$after$fn__16031.invoke (auto.clj:64)
+    clojurescript_build.auto$after$fn__16031.invoke (auto.clj:64)
+    clojurescript_build.auto$after$fn__16031.invoke (auto.clj:64)
+    clojurescript_build.auto$error$fn__16034.invoke (auto.clj:71)
+    clojurescript_build.auto$before$fn__16028.invoke (auto.clj:60)
+    clojurescript_build.auto$make_conditional_builder$fn__16046.invoke (auto.clj:103)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.681 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.584 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.589 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.583 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.586 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+WARNING: Use of undeclared Var outliner.components.index/editing at line 135 src/cljs/outliner/components/index.cljs
+WARNING: Use of undeclared Var outliner.components.index/editing at line 135 src/cljs/outliner/components/index.cljs
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.639 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.594 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.582 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.587 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.587 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.584 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.583 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.581 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.58 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.6 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.589 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.623 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.641 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.603 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.599 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.606 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.593 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.589 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.586 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.577 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.593 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.592 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.578 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.59 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.583 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.584 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.577 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.595 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.608 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.588 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.586 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.61 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.595 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.59 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.603 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.589 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.591 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.591 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.586 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+Figwheel: focusing on build-ids (dev)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.149 seconds.[0m
+[31mCompiling "resources/public/js/compiled/outliner.js" failed.[0m
+java.lang.AssertionError: Assert failed: (symbol? sym)
+ at cljs.analyzer.api$find_ns.invoke (api.clj:32)
+    figwheel_sidecar.core$expand_to_all_ns$fn__15760.invoke (core.clj:303)
+    clojure.core$keep$fn__6402.invoke (core.clj:6713)
+    clojure.lang.LazySeq.sval (LazySeq.java:40)
+    clojure.lang.LazySeq.seq (LazySeq.java:56)
+    clojure.lang.RT.seq (RT.java:484)
+    clojure.lang.RT.countFrom (RT.java:537)
+    clojure.lang.RT.count (RT.java:530)
+    clojure.set$union.invoke (set.clj:25)
+    figwheel_sidecar.core$expand_to_all_ns.invoke (core.clj:304)
+    figwheel_sidecar.core$notify_cljs_ns_changes.invoke (core.clj:350)
+    figwheel_sidecar.core$check_for_changes.invoke (core.clj:374)
+    figwheel_sidecar.auto_builder$check_changes.invoke (auto_builder.clj:43)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.core$apply.invoke (core.clj:626)
+    clojure.core$partial$fn__4228.doInvoke (core.clj:2468)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    clojurescript_build.auto$after$fn__16031.invoke (auto.clj:65)
+    clojurescript_build.auto$after$fn__16031.invoke (auto.clj:64)
+    clojurescript_build.auto$error$fn__16034.invoke (auto.clj:71)
+    clojurescript_build.auto$before$fn__16028.invoke (auto.clj:60)
+    clojurescript_build.auto$make_conditional_builder$fn__16046.invoke (auto.clj:103)
+    clojure.core$mapv$fn__6311.invoke (core.clj:6353)
+    clojure.lang.ArrayChunk.reduce (ArrayChunk.java:58)
+    clojure.core.protocols/fn (protocols.clj:98)
+    clojure.core.protocols$fn__6057$G__6052__6066.invoke (protocols.clj:19)
+    clojure.core.protocols$seq_reduce.invoke (protocols.clj:31)
+    clojure.core.protocols/fn (protocols.clj:60)
+    clojure.core.protocols$fn__6031$G__6026__6044.invoke (protocols.clj:13)
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 3.762 seconds.[0m
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 1.052 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.754 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.715 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
