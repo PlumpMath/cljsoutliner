@@ -8,14 +8,15 @@ body {
 }
 li {
   padding: 2px;
+  list-style: none;
 }
 
-p.closed:before {
+li.closed:before {
   content: "▶︎ ";
   font-size: 10px;
 }
 
-p.open:before {
+li.open:before {
   content: "▼ ";
   font-size: 10px;
 }

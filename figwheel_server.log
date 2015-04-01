@@ -1391,3 +1391,67 @@ notifying browser that file changed:  /outliner/components/index.js
 [32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.666 seconds.[0m
 notifying browser that file changed:  /outliner/components/index.js
 sending changed CSS file: resources/public/css/styles.css
+sending changed CSS file: resources/public/css/medium-editor.css
+sending changed CSS file: resources/public/css/medium-editor.css
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.623 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+sending changed CSS file: resources/public/css/styles.css
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.622 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.625 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.628 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.626 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.639 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.633 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.644 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.63 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+WARNING: Wrong number of args (2) passed to cljs.core/not at line 27 src/cljs/outliner/components/index.cljs
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.661 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.62 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.674 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.641 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.633 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.655 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.639 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.632 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.624 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.633 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js
+[0mCompiling "resources/public/js/compiled/outliner.js" from ["src" "dev_src"]...
+[32mSuccessfully compiled "resources/public/js/compiled/outliner.js" in 0.65 seconds.[0m
+notifying browser that file changed:  /outliner/components/index.js

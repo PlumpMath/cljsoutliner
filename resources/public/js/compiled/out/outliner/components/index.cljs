@@ -20,11 +20,16 @@
 
 (defn listen [el type]
   (let [out (chan)]
-    (events/listen el type (fn [e]
+    (events/listen el
+                   type (fn [e]
                              ; ahh.. haxx
-                             (comment (when (or (= (.-keyCode e) 8)
-                                       (= (.-keyCode e) 9))
-                               (.preventDefault e)))
+                             (when 
+                               (and 
+                                 (not= "true"
+                                      (.-contentEditable (.-target e)))
+                                    (or (= (.-keyCode e) 8)
+                                        (= (.-keyCode e) 9)))
+                               (.preventDefault e))
                              (put! out e)))
     out))
 
@@ -142,12 +147,15 @@
 (defcomponent outline-body [node owner]
   (render-state [_ {:keys [base-path selected click-chan mode] :as state}]
                 (dom/li
-                  {:class (if (= (om/path node) (concat base-path selected))
-                            "selected"
-                            "")}
+                  {:class (str 
+                            (if (:closed node) "closed" "open")
+                            " "
+                            (if (= (om/path node) (concat base-path selected))
+                              "selected" ""))}
 
                   (when (-> node :attr :text)
-                    (dom/p {:class (str "txt " (if (:closed node) "closed" "open")) :ref "txt"
+                    (dom/p {:class "txt"
+                            :ref "txt"
                             :dangerouslySetInnerHTML #js {:__html (-> node :attr :text)}
                             :on-click (fn [e]
                                         (.stopPropagation e)
