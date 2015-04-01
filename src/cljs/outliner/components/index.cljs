@@ -39,8 +39,8 @@
 (defn get-parent [current-path] (subvec current-path 0 (- (count current-path) 2)))
 
 (defn remove-node-from-parent [parent-children current-child-idx]
-  (vec (concat (subvec parent-children 0 current-child-idx)
-               (subvec parent-children (inc current-child-idx)))))
+  (into (subvec parent-children 0 current-child-idx)
+        (subvec parent-children (inc current-child-idx))))
 
 
 (defn add-node-to-parent [parent-children current-child-idx]
@@ -65,6 +65,7 @@
    [9  :shift] :left-shift-node  ;shift-tab
    [37 :alt]   :left-shift-node  ;alt-left
    ; delete ------------------------------------
+   [8 ]        :destroy-node     ;backspace
    [8 :alt]    :destroy-node     ;alt-bkspace
    ; visibility of children --------------------
    [32]        :toggle-closed    ;space
