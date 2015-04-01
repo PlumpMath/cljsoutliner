@@ -7,17 +7,24 @@
     [om-tools.core :refer-macros [defcomponent]]
     [om-tools.dom :as dom :include-macros true]
     [daviferreira.MediumEditor]
-    ))
+    [goog.date.DateTime]
+    )
+  )
 
 (def root-node [:body 0])
+
+(defn gen-empty-text-node []
+  {:attr {:closed false :text " " :created (goog.date.DateTime.)}
+   :children []
+   })
 
 (defn listen [el type]
   (let [out (chan)]
     (events/listen el type (fn [e]
                              ; ahh.. haxx
-                             (when (or (= (.-keyCode e) 8)
+                             (comment (when (or (= (.-keyCode e) 8)
                                        (= (.-keyCode e) 9))
-                               (.preventDefault e))
+                               (.preventDefault e)))
                              (put! out e)))
     out))
 
@@ -29,6 +36,15 @@
 (defn remove-node-from-parent [parent-children current-child-idx]
   (vec (concat (subvec parent-children 0 current-child-idx)
                (subvec parent-children (inc current-child-idx)))))
+
+
+(defn add-node-to-parent [parent-children current-child-idx]
+  (if (empty? parent-children) 
+    [(gen-empty-text-node)]
+    (into (conj 
+            (subvec parent-children 0 (inc current-child-idx))
+            (gen-empty-text-node))
+          (subvec parent-children (inc current-child-idx)))))
 
 (def normal-keymap
   {; cursor movement ---------------------------
@@ -44,16 +60,23 @@
    [9  :shift] :left-shift-node  ;shift-tab
    [37 :alt]   :left-shift-node  ;alt-left
    ; delete ------------------------------------
-   [8]         :destroy-node     ;bkspace
+   [8 :alt]    :destroy-node     ;alt-bkspace
    ; visibility of children --------------------
    [32]        :toggle-closed    ;space
    ; editing -----------------------------------
-   [13]        :toggle-edit      ;return
+   [13]        :add-new-sibbling ;shift-return
+   [13 :alt]   :add-new-child    ;alt-return
+   [13 :shift] :toggle-edit      ;return
    })
 
 (def edit-keymap 
-  {
-   [27] :toggle-edit ; escape
+  {[27]        :toggle-edit      ;escape
+   [38]        :cursor-left      ;up key
+   [40]        :cursor-right     ;down key
+   [13]        :add-new-sibbling ;return
+   [13 :shift] :add-new-sibbling ;shift-return
+   [13 :alt]   :add-new-child    ;alt-return
+   [8 :alt]    :destroy-node     ;alt-bkspace
    })
 
 (defn prev-depth-path [parent-path body]
@@ -87,6 +110,14 @@
         ; else, try again a level up
         :else (recur (get-parent p))))))
 
+(defn init-editor [dom-node]
+  (js/MediumEditor. 
+    dom-node
+    #js {:disableReturn true
+         :disablePlaceholders true
+         :buttons #js ["bold" "italic" "underline" "anchor"]
+         }))
+
 (defn gen-right-path [current-path current current-child-idx
                       parent-path parent-children
                       down-path
@@ -113,17 +144,17 @@
                 (dom/li
                   {:class (if (= (om/path node) (concat base-path selected))
                             "selected"
-                            "")
-                   :on-click (fn [e]
-                               (.stopPropagation e)
-                               (.preventDefault e)
-                               (put! click-chan {:new-path (om/path node)})
-                               )}
+                            "")}
 
                   (when (-> node :attr :text)
-                    (dom/div {:class "txt" :ref "txt"
-                              :dangerouslySetInnerHTML #js {:__html (-> node :attr :text)}
-                              } nil))
+                    (dom/p {:class (str "txt " (if (:closed node) "closed" "open")) :ref "txt"
+                            :dangerouslySetInnerHTML #js {:__html (-> node :attr :text)}
+                            :on-click (fn [e]
+                                        (.stopPropagation e)
+                                        (.preventDefault e)
+                                        (put! click-chan {:new-path (om/path node)})
+                                        )
+                            } nil))
 
                   (when (and (not (empty? (:children node)))
                              (not (:closed node)))
@@ -136,10 +167,12 @@
                                              }})))
                   ))
 
+  (did-mount [_] ; force did-update on mount
+             (om/set-state! owner :mounted true))
+
   (did-update [_ _ _]
               (let [{:keys [mode base-path selected editor-ref]} (om/get-state owner)
-                    current-node (om/path node)
-                    ]
+                    current-node (om/path node)]
                 (cond
                   ; editing, this is selected, has no editor -> make editor.
                   (and
@@ -147,7 +180,7 @@
                     (= current-node (concat base-path selected))
                     (nil? (om/get-state owner :editor-ref)))
                   (do
-                    (om/set-state! owner :editor-ref (js/MediumEditor. (om/get-node owner "txt")))
+                    (om/set-state! owner :editor-ref (init-editor (om/get-node owner "txt")))
                     (.focus (om/get-node owner "txt")))
 
                   ; has editor and (not editing, or not selected) -> serialize contents.
@@ -164,7 +197,11 @@
                                     (om/set-state! owner :editor-ref nil)
                                     (assoc-in d [:attr :text] new-txt))))
                   :else :no-op)
-                )))
+                ))
+
+  (will-unmount [_]
+                (when-let [editor (om/get-state owner :editor-ref)]
+                  (.destroy editor))))
 
 (defcomponent component [data owner]
   (init-state [_]
@@ -310,24 +347,49 @@
                                (if (= :editing (om/get-state owner :mode))
                                  (om/set-state! owner :mode :normal)
                                  (om/set-state! owner :mode :editing)))
+
+                             :add-new-sibbling
+                             (when (not is-root)
+                               (let [new-sibblings (add-node-to-parent parent-children current-child-idx)
+                                     new-path      (conj parent-path :children (inc current-child-idx))]
+                                 (om/set-state! owner :selected new-path)
+                                 (om/set-state! owner :mode :editing)
+                                 (om/transact! data
+                                               #(assoc-in %
+                                                          (conj parent-path :children)
+                                                          new-sibblings))
+                                 )) 
+                             :add-new-child
+                             (when (not is-root)
+                               (let [current-children (current :children)
+                                     new-children     (conj current-children (gen-empty-text-node))
+                                     new-path         (conj current-path :children (dec (count new-children)))]
+                                 (om/set-state! owner :selected new-path)
+                                 (om/set-state! owner :mode :editing)
+                                 (om/transact! data
+                                               #(assoc-in %
+                                                          (conj current-path :children)
+                                                          new-children))
+                                 )) 
+
                              (recur)
                              )))
 
-; click events
-; -------------------------------------------------------------------------------
-click-chan ([e c]
-            (let 
-              [target-path (subvec (:new-path e) (count base-path))]
-              (om/set-state! owner :selected target-path)
-              )))
-(recur)))
+                          ; click events
+                          ; -------------------------------------------------------------------------------
+                          click-chan ([e c]
+                                      (let 
+                                        [target-path (subvec (:new-path e) (count base-path))]
+                                        (om/set-state! owner :selected target-path)
+                                        )))
+                          (recur)))
 
-; starting state
-; -------------------------------------------------------------------------------
-{:selected   root-node
- :click-chan click-chan
- :base-path  base-path
- :mode :normal}))
+                          ; starting state
+                          ; -------------------------------------------------------------------------------
+                          {:selected  root-node
+                          :click-chan click-chan
+                          :base-path  base-path
+                          :mode :normal}))
 
 (render-state [_ state]
               (dom/div {:class "yeah"}

@@ -1,7 +1,30 @@
 body {
   margin-top: 80px;
 }
+
 .selected > .txt {
-  color: white;
-  background: black;
+  background: #f2f2f2;
+  border: #ccc;
 }
+li {
+  padding: 2px;
+}
+
+p.closed:before {
+  content: "▶︎ ";
+  font-size: 10px;
+}
+
+p.open:before {
+  content: "▼ ";
+  font-size: 10px;
+}
+
+li p {
+  padding: 2px; margin: 0;
+  line-height: 1.2em;
+  display: inline-block;
+  width: 80%;
+  min-height: 20px;
+}
+
